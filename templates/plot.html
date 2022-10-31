@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Plotted Attack Graph</title>
+    <h1>Welcome to AttackWeb .01 (pre-Alpha)</h1>
+{% endblock head %}
+
+{% block body %}
+    <div class="article-title">Here is your attack graph and probability overview:</div>
+    <div>
+    <iframe  id="plottedGraph" width="860px" height="640px" src="/graph"></iframe>
+    </div>
+    <br>
+    <div><h2>Risk Elements</h2></div>
+    {% for edge in edge_list %}
+        <div class=".content-section">
+            <b>Threat:</b> {{ edge['from'] }}<br>
+            <b>Risk:</b> {{ edge['to'] }}<br>
+            <b>Probability:</b> {{ edge['width'] }}%<br><br>
+        </div>
+    {% endfor %}
+
+{% endblock body %}
